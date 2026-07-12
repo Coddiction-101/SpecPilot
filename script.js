@@ -132,13 +132,21 @@ const budgetCatalog = {
   }
 };
 
+const COMPARE_LIMIT = 3;
 let currentTab = 'b1';
 let compareList = [];
+
+function escapeHtml(value) {
+  const div = document.createElement('div');
+  div.textContent = value == null ? '' : String(value);
+  return div.innerHTML;
+}
 
 function updateFlowResult() {
   const resultEmpty = document.getElementById('flow-result-empty');
   const resultCard = document.getElementById('flow-result-card');
   const matchScore = document.getElementById('match-score-badge');
+  if (!resultEmpty || !resultCard || !matchScore) return;
 
   let recommendation = flowRecommendations.find(item => {
     const budgetMatch = flowOptions.budget === 'any' || item.budget === flowOptions.budget;
@@ -156,6 +164,7 @@ function updateFlowResult() {
     resultEmpty.classList.remove('hidden');
     resultCard.classList.add('hidden');
     matchScore.textContent = 'No clear match yet';
+    window.currentRecommendation = null;
     return;
   }
 
@@ -171,10 +180,10 @@ function updateFlowResult() {
   document.getElementById('flow-res-disp').textContent = recommendation.disp;
   document.getElementById('flow-res-rationale').textContent = recommendation.rationale;
   matchScore.textContent = 'Recommended Match';
-  matchScore.classList.remove('badge-soft');
   matchScore.classList.add('badge-match');
 
   window.currentRecommendation = recommendation;
+  updateCompareActionState();
 }
 
 function setFlowOption(type, value) {
@@ -235,26 +244,28 @@ function renderBudgetTab(tabId) {
   const bucket = budgetCatalog[tabId];
   if (!bucket) return;
 
+  const fragment = document.createDocumentFragment();
   bucket.items.forEach(item => {
     const card = document.createElement('article');
-    card.className = 'glass-card rounded-3xl p-5 border border-slate-200';
+    card.className = 'glass-card rounded-3xl p-5';
     card.innerHTML = `
       <div class="flex items-center justify-between gap-3">
         <div>
-          <p class="text-xs uppercase tracking-wider text-sky-700 font-bold">${item.brand}</p>
-          <h4 class="text-lg font-extrabold text-slate-900">${item.model}</h4>
+          <p class="text-xs uppercase tracking-wider t-accent-text font-bold">${escapeHtml(item.brand)}</p>
+          <h4 class="text-lg font-extrabold t-heading">${escapeHtml(item.model)}</h4>
         </div>
-        <span class="text-emerald-600 font-black">${item.price}</span>
+        <span class="t-success-text font-black">${escapeHtml(item.price)}</span>
       </div>
-      <div class="mt-4 space-y-2 text-xs text-slate-500">
-        <p><span class="font-semibold text-slate-700">CPU:</span> ${item.cpu}</p>
-        <p><span class="font-semibold text-slate-700">RAM:</span> ${item.ram}</p>
-        <p><span class="font-semibold text-slate-700">Display:</span> ${item.display}</p>
-        <p>${item.note}</p>
+      <div class="mt-4 space-y-2 text-xs t-muted">
+        <p><span class="font-semibold t-body">CPU:</span> ${escapeHtml(item.cpu)}</p>
+        <p><span class="font-semibold t-body">RAM:</span> ${escapeHtml(item.ram)}</p>
+        <p><span class="font-semibold t-body">Display:</span> ${escapeHtml(item.display)}</p>
+        <p>${escapeHtml(item.note)}</p>
       </div>
     `;
-    panel.appendChild(card);
+    fragment.appendChild(card);
   });
+  panel.appendChild(fragment);
 }
 
 function initializeBudgetTabs() {
@@ -264,52 +275,125 @@ function initializeBudgetTabs() {
   renderBudgetTab(currentTab);
 }
 
+function updateCompareActionState() {
+  const compareBtn = document.getElementById('flow-action-compare');
+  if (!compareBtn) return;
+  const recommendation = window.currentRecommendation;
+  const alreadyAdded = recommendation && compareList.some(item => item.model === recommendation.model);
+  const isFull = compareList.length >= COMPARE_LIMIT;
+
+  if (!recommendation) {
+    compareBtn.disabled = true;
+    compareBtn.textContent = 'Get a recommendation first';
+  } else if (alreadyAdded) {
+    compareBtn.disabled = true;
+    compareBtn.textContent = 'Already in comparison';
+  } else if (isFull) {
+    compareBtn.disabled = true;
+    compareBtn.textContent = `Comparison full (${COMPARE_LIMIT}/${COMPARE_LIMIT})`;
+  } else {
+    compareBtn.disabled = false;
+    compareBtn.textContent = 'Send to Comparison Slot';
+  }
+}
+
 function addCurrentRecommendationToCompare() {
   const recommendation = window.currentRecommendation;
   if (!recommendation) return;
   if (compareList.some(item => item.model === recommendation.model)) return;
-  if (compareList.length >= 3) {
-    return;
-  }
+  if (compareList.length >= COMPARE_LIMIT) return;
   compareList.push(recommendation);
-  renderCompareList();
+  renderCompareArea();
 }
 
-function renderCompareList() {
-  const compareListEl = document.getElementById('compare-list');
-  compareListEl.innerHTML = '';
+function removeFromCompare(model) {
+  compareList = compareList.filter(item => item.model !== model);
+  renderCompareArea();
+}
+
+function clearCompare() {
+  compareList = [];
+  renderCompareArea();
+}
+
+const COMPARE_ROWS = [
+  { key: 'category', label: 'Category' },
+  { key: 'price', label: 'Price', className: 'compare-slot-price' },
+  { key: 'cpu', label: 'CPU' },
+  { key: 'gpu', label: 'GPU' },
+  { key: 'ram', label: 'RAM' },
+  { key: 'disp', label: 'Display' }
+];
+
+function renderCompareArea() {
+  const area = document.getElementById('compare-area');
+  const clearBtn = document.getElementById('compare-clear');
+  if (!area) return;
+
   if (compareList.length === 0) {
-    compareListEl.innerHTML = '<p class="text-xs text-slate-400">No systems added yet. Use the Compare button after you get a recommendation.</p>';
-  }
-  compareList.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-700';
-    card.innerHTML = `
-      <div class="flex justify-between items-center gap-2 mb-3">
-        <div>
-          <p class="font-bold text-slate-900">${item.brand} ${item.model}</p>
-          <p class="text-[11px] text-slate-500">${item.category}</p>
-        </div>
-        <span class="text-emerald-600 font-bold">${item.price}</span>
-      </div>
-      <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-500">
-        <div><span class="font-semibold text-slate-700">CPU:</span> ${item.cpu}</div>
-        <div><span class="font-semibold text-slate-700">GPU:</span> ${item.gpu}</div>
-        <div><span class="font-semibold text-slate-700">RAM:</span> ${item.ram}</div>
-        <div><span class="font-semibold text-slate-700">Display:</span> ${item.disp}</div>
+    area.innerHTML = `
+      <div class="compare-empty">
+        <i class="fa-solid fa-scale-balanced text-2xl t-faint block mb-2"></i>
+        Add up to ${COMPARE_LIMIT} recommendations from the flowchart above to compare them row by row.
       </div>
     `;
-    compareListEl.appendChild(card);
-  });
-  document.getElementById('compare-badge').textContent = compareList.length.toString();
+    if (clearBtn) clearBtn.classList.add('hidden');
+  } else {
+    const headerCells = compareList
+      .map(item => `
+        <th scope="col">
+          <div class="flex items-center justify-between gap-2">
+            <span class="compare-slot-name">${escapeHtml(item.brand)} ${escapeHtml(item.model)}</span>
+            <button type="button" class="compare-remove" data-remove-model="${escapeHtml(item.model)}" aria-label="Remove ${escapeHtml(item.model)} from comparison">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </th>
+      `)
+      .join('');
+
+    const bodyRows = COMPARE_ROWS
+      .map(row => {
+        const cells = compareList
+          .map(item => `<td class="${row.className || ''}">${escapeHtml(item[row.key])}</td>`)
+          .join('');
+        return `<tr><th scope="row">${row.label}</th>${cells}</tr>`;
+      })
+      .join('');
+
+    area.innerHTML = `
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead><tr><th scope="col">Spec</th>${headerCells}</tr></thead>
+          <tbody>${bodyRows}</tbody>
+        </table>
+      </div>
+    `;
+
+    area.querySelectorAll('[data-remove-model]').forEach(button => {
+      button.addEventListener('click', () => removeFromCompare(button.dataset.removeModel));
+    });
+
+    if (clearBtn) clearBtn.classList.remove('hidden');
+  }
+
+  const badge = document.getElementById('compare-badge');
+  if (badge) badge.textContent = compareList.length.toString();
+  updateCompareActionState();
+}
+
+function initializeCompareControls() {
+  const clearBtn = document.getElementById('compare-clear');
+  if (clearBtn) clearBtn.addEventListener('click', clearCompare);
 }
 
 function initializePage() {
   initializeFlowControls();
   initializeTrapButtons();
   initializeBudgetTabs();
+  initializeCompareControls();
   updateFlowResult();
-  renderCompareList();
+  renderCompareArea();
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);
