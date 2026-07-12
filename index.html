@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpecPilot — Laptop Buying Compass India 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-z7cPeGT+9hRZkruDyE96QNG1UkiUghss8gLRgzM+MMonnENoU4Usz9oi+hSxEdiZxZ+Q2l2usuG/87GLE5bnhw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script>
+    window.tailwind = { config: {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#0f172a'
+            },
+            accent: {
+              teal: '#0d9488',
+              orange: '#ea580c',
+              emerald: '#059669',
+              rose: '#e11d48'
+            }
+          }
+        }
+      }
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen antialiased selection:bg-brand-500 selection:text-white">
+  <header class="page-header border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4 py-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-br from-sky-600 to-cyan-600 text-white p-3 rounded-2xl shadow-lg shadow-sky-500/20">
+          <i class="fa-solid fa-compass text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+            SPECPILOT
+          </h1>
+          <p class="text-xs text-slate-500 font-medium">Hardware-first laptop guidance with a dedicated interactive app experience.</p>
+        </div>
+      </div>
 
+      <nav class="hidden lg:flex items-center gap-2">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#why-specpilot" class="nav-link">Why SpecPilot</a>
+        <a href="#cta" class="nav-link">Get Started</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="app.html" class="action-solid inline-flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Open App
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <section class="hero-panel rounded-[2.5rem] overflow-hidden border border-slate-200 bg-white p-10 md:p-16 shadow-[0_30px_80px_-50px_rgba(15,23,42,0.2)]">
+      <div class="max-w-4xl space-y-8">
+        <div class="inline-flex items-center gap-3 rounded-full bg-sky-50 px-4 py-2 text-xs font-bold text-sky-700 shadow-sm shadow-sky-100">
+          <i class="fa-solid fa-compass"></i> Hardware-first laptop buying guidance
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          SpecPilot helps you choose the right laptop in 2026 India — without the noise.
+        </h1>
+        <p class="max-w-3xl text-base leading-8 text-slate-600">
+          A clean landing page for SpecPilot Laptop Compass. Explore the interactive recommendation app, compare hardware, and avoid common buying traps.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="app.html" class="action-solid inline-flex items-center gap-2">Open the SpecPilot App</a>
+          <a href="#features" class="secondary-button inline-flex items-center gap-2">See Features</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="grid gap-8 xl:grid-cols-[1fr_0.8fr]">
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-3 rounded-3xl bg-slate-100 px-4 py-3 text-sm text-slate-700 shadow-sm shadow-slate-100">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          Built for laptop discovery in India 2026
+        </div>
+        <h2 class="text-3xl font-bold text-slate-900">A modern buyer's compass for hardware-first decisions.</h2>
+        <p class="text-slate-600 leading-8">SpecPilot is built around clear hardware signals, budget segments, and the exact traps you should avoid in 2026. It helps you compare real specs, not slogans.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="info-card bg-white border border-slate-200 p-6 rounded-[1.75rem] shadow-sm">
+          <h3 class="text-base font-bold text-slate-900">Interactive recommendation flow</h3>
+          <p class="mt-3 text-sm text-slate-600">Answer quick questions and get a laptop match based on workload, budget, battery, and display needs.</p>
+        </article>
+        <article class="info-card bg-white border border-slate-200 p-6 rounded-[1.75rem] shadow-sm">
+          <h3 class="text-base font-bold text-slate-900">Trap detector</h3>
+          <p class="mt-3 text-sm text-slate-600">Spot problems like soldered RAM, weak GPUs, and low-gamut screens before you buy.</p>
+        </article>
+        <article class="info-card bg-white border border-slate-200 p-6 rounded-[1.75rem] shadow-sm">
+          <h3 class="text-base font-bold text-slate-900">Budget catalog</h3>
+          <p class="mt-3 text-sm text-slate-600">Browse curated price brackets from entry-level to flagship models in India.</p>
+        </article>
+        <article class="info-card bg-white border border-slate-200 p-6 rounded-[1.75rem] shadow-sm">
+          <h3 class="text-base font-bold text-slate-900">Comparison ready</h3>
+          <p class="mt-3 text-sm text-slate-600">Add recommendations to a side-by-side comparison list to choose the best fit.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="why-specpilot" class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-center">
+      <div class="space-y-6">
+        <span class="inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-2 text-xs font-semibold text-sky-700">Why SpecPilot?</span>
+        <h2 class="text-3xl font-bold text-slate-900">Crystal-clear guidance for laptop buyers.</h2>
+        <p class="text-slate-600 leading-8">SpecPilot cuts through product noise with a focused, clean experience. It navigates you to meaningful specs, not glowing marketing words.</p>
+        <ul class="space-y-4 text-slate-600">
+          <li class="flex gap-3"><span class="mt-1 text-sky-700"><i class="fa-solid fa-check"></i></span> Clear guidance rather than overwhelming technical jargon.</li>
+          <li class="flex gap-3"><span class="mt-1 text-sky-700"><i class="fa-solid fa-check"></i></span> Dedicated landing page plus a separate interactive app page.</li>
+          <li class="flex gap-3"><span class="mt-1 text-sky-700"><i class="fa-solid fa-check"></i></span> Hardware-focused decisions for India’s 2026 laptop market.</li>
+        </ul>
+      </div>
+      <div class="grid gap-4">
+        <div class="rounded-[2rem] bg-gradient-to-br from-sky-50 via-white to-slate-50 p-8 shadow-sm border border-slate-200">
+          <p class="text-xs uppercase tracking-[0.2em] text-sky-700 font-semibold">Project name</p>
+          <h3 class="mt-4 text-2xl font-bold text-slate-900">SpecPilot Laptop Compass</h3>
+          <p class="mt-3 text-slate-600">A hardware-first guide for laptop buyers with a clean landing page and a dedicated interactive app experience.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-8 border border-slate-200 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold">Get started</p>
+          <h3 class="mt-4 text-2xl font-bold text-slate-900">Open the SpecPilot app</h3>
+          <p class="mt-3 text-slate-600">Click the header button or the CTA below to launch the recommendation engine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-[0_25px_60px_-40px_rgba(15,23,42,0.2)]">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="text-sm uppercase tracking-[0.3em] text-sky-700 font-semibold">Ready to choose?</p>
+          <h2 class="mt-3 text-3xl font-bold text-slate-900">Open SpecPilot and find the right laptop in minutes.</h2>
+        </div>
+        <a href="app.html" class="action-solid inline-flex items-center gap-3">Launch SpecPilot <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
