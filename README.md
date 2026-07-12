@@ -1,4 +1,4 @@
-# SpecPilot 🧭
+# SpecPilot 
 
 Live - [SpecPilot](https://specpilot.netlify.app/app)
 
