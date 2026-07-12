@@ -36,17 +36,7 @@ No affiliate bait, no "editor's choice" that happens to be whoever paid the most
 
 No build step, no npm install, no config. Just open `index.html` in any browser and you're good.
 
-If you want to host it, throw the folder on [Netlify Drop](https://app.netlify.com/drop) and it'll be live in 30 seconds.
-
----
-
-## Stack
-
-Plain HTML, CSS, and vanilla JS. Tailwind via CDN for layout utilities, but all colors run through CSS variables in `styles.css` rather than raw Tailwind color classes — that's what makes the theme toggle work without a second copy of every class. Font Awesome for icons. Google Fonts (Plus Jakarta Sans for text, JetBrains Mono for specs and prices).
-
-Kept it simple on purpose — this is a project you can open, understand, and modify without any toolchain overhead.
-
----
+----
 
 ## Things I'd add later
 
