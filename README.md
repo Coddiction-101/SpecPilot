@@ -1,41 +1,58 @@
-# SpecPilot
+# SpecPilot 🧭
 
-A small two-page site for figuring out which laptop to buy in India, without wading through ten YouTube "TOP 5 LAPTOPS!!" videos first. There's a landing page and an app page — answer a few questions, get a hardware match, check it against a trap list, compare a few options side by side.
+Live - [specpilot.netlify.app](https://specpilot.netlify.app/app)
+---
 
-## Files
+I built this because every time someone asks "which laptop should I buy?" the answers online are either sponsored garbage or a Reddit thread from 2019. SpecPilot is my attempt at a clean, honest, hardware-first guide for the Indian laptop market in 2026.
 
-```
-index.html   → landing page, links out to the app
-app.html     → the actual tool (flowchart, trap detector, catalog, comparison)
-styles.css   → theme variables + all the custom component styles
-script.js    → app logic (flowchart matching, catalog rendering, comparison table)
-theme.js     → the light/dark toggle, shared by both pages
-```
+No affiliate bait, no "editor's choice" that happens to be whoever paid the most. Just specs, traps to avoid, and a recommendation you can actually trust.
 
+---
 
+## What's inside
 
+| File | What it does |
+|------|-------------|
+| `index.html` | Landing page — project intro, features overview, links to the app |
+| `app.html` | The actual tool — recommendation engine, trap detector, budget catalog, comparison panel |
+| `styles.css` | Shared styles + theme variables (light/dark) across both pages |
+| `script.js` | All the interactive logic — flowchart engine, trap cards, budget tabs, comparison table |
+| `theme.js` | The light/dark toggle button, shared by both pages |
 
-## How the recommendation engine works
+---
 
-It's genuinely just a lookup table, not anything fancier. `flowRecommendations` in `script.js` is a small array of laptop profiles tagged with use-case, budget, battery preference, and display preference. When you click through the selectors, `updateFlowResult()` filters that array for the best match, and falls back to a looser match (ignoring battery/display) if nothing fits exactly. Four laptops total right now — one per use case. Add more entries to the array if you want finer-grained results per budget tier.
+## Features
 
-## The comparison table
+- **Buying flowchart** — pick your use case, budget, battery preference, and display type. Get a matched laptop recommendation instantly.
+- **Trap detector** — 6 real buying traps (soldered RAM, low TGP, 45% NTSC screens, etc.) with a plain-english explanation of why they're bad and the exact marketing pitch used to sell them.
+- **Budget catalog** — curated laptops across 4 price brackets from ₹25K to ₹1.2L+, with key specs at a glance.
+- **Comparison table** — send up to 3 recommendations into a proper side-by-side spec table (CPU, GPU, RAM, display, price as rows), not three cards repeating the same labels.
+- **Light/dark theme** — toggle pinned to the bottom of the screen. Remembers your choice, respects your system preference on first visit, no flash of the wrong theme on load.
+- **Tech jargon explainer** — quick definitions for NPU/TOPS, TGP, LPDDR5X, and single-slot SSDs because not everyone has the time to Google each term.
 
-Click "Send to Comparison Slot" after getting a recommendation and it gets added as a column in a spec table (up to 3 at a time). Each row is one spec — CPU, GPU, RAM, etc. — so you can actually scan across and compare rather than reading three separate cards that repeat the same labels. There's a remove button per column and a clear-all button once you've got something in there.
+---
 
-## Known limitations/things I didn't do
+## How to run it
 
-- The catalog and recommendation data are hand-written placeholder specs, not pulled from anywhere live. Prices will drift.
-- No routing, no state persistence beyond the theme — refresh the app page and your comparison list resets.
-- Only tested down to ~375px width. Should be fine on most phones but I haven't checked anything ancient.
-- No build tooling on purpose. If this grows past a few more sections, it's probably worth moving to a bundler, but for now editing raw HTML is faster than fighting a toolchain.
+No build step, no npm install, no config. Just open `index.html` in any browser and you're good.
 
-## Local preview
+If you want to host it, throw the folder on [Netlify Drop](https://app.netlify.com/drop) and it'll be live in 30 seconds.
 
-There's no server-side anything, so any static file server works:
+---
 
-```bash
-python3 -m http.server 8000
-```
+## Stack
 
-then open `localhost:8000`.
+Plain HTML, CSS, and vanilla JS. Tailwind via CDN for layout utilities, but all colors run through CSS variables in `styles.css` rather than raw Tailwind color classes — that's what makes the theme toggle work without a second copy of every class. Font Awesome for icons. Google Fonts (Plus Jakarta Sans for text, JetBrains Mono for specs and prices).
+
+Kept it simple on purpose — this is a project you can open, understand, and modify without any toolchain overhead.
+
+---
+
+## Things I'd add later
+
+- Actual Amazon/Flipkart price tracking (right now prices are hardcoded)
+- More laptops in the recommendation database — it's one entry per use case right now
+- A proper filter system for the budget catalog
+- Maybe persist the comparison list across page reloads instead of resetting on refresh
+
+---
