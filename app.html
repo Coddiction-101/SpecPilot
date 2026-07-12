@@ -1,1 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpecPilot — Laptop Buying Compass India 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-z7cPeGT+9hRZkruDyE96QNG1UkiUghss8gLRgzM+MMonnENoU4Usz9oi+hSxEdiZxZ+Q2l2usuG/87GLE5bnhw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script>
+    window.tailwind = { config: {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#0f172a'
+            },
+            accent: {
+              teal: '#0d9488',
+              orange: '#ea580c',
+              emerald: '#059669',
+              rose: '#e11d48'
+            }
+          }
+        }
+      }
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen antialiased selection:bg-brand-500 selection:text-white">
+  <header class="page-header border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4 py-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-br from-sky-600 to-cyan-600 text-white p-3 rounded-2xl shadow-lg shadow-sky-500/20">
+          <i class="fa-solid fa-compass text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-extrabold tracking-tight text-slate-900 flex items-center gap-2">
+            SPECPILOT <span class="bg-sky-50 text-sky-700 text-xs px-2.5 py-0.5 rounded-full border border-sky-100 font-bold">2026 INDIA</span>
+          </h1>
+          <p class="text-xs text-slate-500 font-medium">Hardware-first laptop buying guidance with regional pricing clarity.</p>
+        </div>
+      </div>
 
+      <nav class="hidden lg:flex items-center gap-2">
+        <a href="#quick-selectors" class="nav-link">Decision Tree</a>
+        <a href="#trap-detector" class="nav-link">Traps to Avoid</a>
+        <a href="#catalog" class="nav-link">Budget Catalog</a>
+        <a href="#comparator" class="nav-link">Side-by-Side</a>
+        <a href="#learning-hub" class="nav-link">Tech Jargon</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#comparator" class="action-solid inline-flex items-center gap-2">
+          <i class="fa-solid fa-scale-balanced"></i> Compare Matrix <span id="compare-badge" class="badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <section class="hero-panel relative rounded-3xl overflow-hidden border border-slate-200 bg-white p-8 sm:p-12 shadow-2xl">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.08),transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl space-y-6">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-sky-50 text-sky-700 border border-sky-100">
+          <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span> Hardware-first laptop buying compass
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+          Find your next laptop with clarity.<br />SpecPilot removes brand fog and shows the best fit.
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl">
+          A modern interactive guide built for India's 2026 laptop market. Compare hardware, spot buying traps, and navigate to the right device with confidence.
+        </p>
+        <div class="pt-4 flex flex-wrap gap-4">
+          <a href="#quick-selectors" class="hero-button">Launch Buying Flowchart</a>
+          <a href="#catalog" class="secondary-button">Browse Budget Portfolios</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="quick-selectors" class="scroll-mt-24 space-y-6">
+      <div>
+        <h3 class="section-title">1. Which Laptop Should You Buy? (Flowchart Engine)</h3>
+        <p class="section-subtitle">Answer quick questions to isolate the hardware profile that matches your workflow.</p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-5 space-y-6">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-sky-700">Buying Parameters Selector</h4>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">1. Main Use Case Profile</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" data-flow-type="uc" data-flow-value="coding" class="flow-btn">💻 Programming<span class="block text-[9px] text-slate-500">MERN/Java/Docker</span></button>
+                  <button type="button" data-flow-type="uc" data-flow-value="general" class="flow-btn">🎓 Academic / Office<span class="block text-[9px] text-slate-500">Documents, Web, Office</span></button>
+                  <button type="button" data-flow-type="uc" data-flow-value="gaming" class="flow-btn">🎮 Gaming & ML<span class="block text-[9px] text-slate-500">High Frames, local AI</span></button>
+                  <button type="button" data-flow-type="uc" data-flow-value="creator" class="flow-btn">🎬 Creator / Design<span class="block text-[9px] text-slate-500">Editing, 100% sRGB+</span></button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">2. Desired Budget Envelope</label>
+                <select id="flow-budget" class="input-select">
+                  <option value="any">No Budget Limit (Absolute Ideal)</option>
+                  <option value="entry">Entry Tier (Under ₹45,000)</option>
+                  <option value="mid">Mid Tier (₹45,000 - ₹75,000)</option>
+                  <option value="premium">Premium Tier (₹75,000 - ₹1.2 Lakhs)</option>
+                  <option value="flagship">Flagship / Professional (₹1.2 Lakhs+)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">3. Portability & Battery Priority</label>
+                <div class="flex gap-2">
+                  <button type="button" data-flow-type="bat" data-flow-value="long" class="flow-btn flex-1">🔋 10hr+ Battery</button>
+                  <button type="button" data-flow-type="bat" data-flow-value="any" class="flow-btn flex-1">🔌 Peak Power Focus</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">4. Display Screen Surface</label>
+                <div class="flex gap-2">
+                  <button type="button" data-flow-type="disp" data-flow-value="oled" class="flow-btn flex-1">OLED Premium Contrast</button>
+                  <button type="button" data-flow-type="disp" data-flow-value="any" class="flow-btn flex-1">Matte IPS Anti-Glare</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-6">
+            <div class="space-y-4">
+              <div class="flex justify-between items-center border-b border-slate-200/80 pb-3">
+                <h5 class="text-xs font-bold uppercase tracking-wider text-sky-700 flex items-center gap-2"><i class="fa-solid fa-microchip"></i> System Recommendation Match</h5>
+                <span id="match-score-badge" class="badge badge-soft">98% Match Spec</span>
+              </div>
+
+              <div id="flow-result-empty" class="py-12 text-center text-slate-500 space-y-2 hidden">
+                <i class="fa-solid fa-filter-list text-3xl text-slate-400"></i>
+                <p class="text-xs">Select options on the left to see the system profile recommendation.</p>
+              </div>
+
+              <div id="flow-result-card" class="space-y-4 hidden">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span id="flow-res-brand" class="text-xs text-sky-700 font-bold uppercase">ASUS</span>
+                    <h4 id="flow-res-model" class="text-xl font-extrabold text-slate-900">Vivobook S 14 OLED</h4>
+                    <p id="flow-res-category" class="text-[10px] text-slate-500">₹1.2L+ Flagship Workstation</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[10px] text-slate-500 block font-bold uppercase">Indian Price Limit</span>
+                    <span id="flow-res-price" class="text-lg font-black text-emerald-600">₹1,52,990</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 bg-slate-100 p-4 rounded-xl text-xs border border-slate-200 font-medium">
+                  <div><span class="text-slate-500 block text-[9px] uppercase tracking-wider">CPU Class</span><span id="flow-res-cpu" class="text-slate-700">AMD Ryzen AI 9 HX 370</span></div>
+                  <div><span class="text-slate-500 block text-[9px] uppercase tracking-wider">Graphics Pipeline</span><span id="flow-res-gpu" class="text-slate-700">AMD Radeon 890M</span></div>
+                  <div><span class="text-slate-500 block text-[9px] uppercase tracking-wider">RAM & Speed</span><span id="flow-res-ram" class="text-slate-700">24GB LPDDR5X (7500MHz)</span></div>
+                  <div><span class="text-slate-500 block text-[9px] uppercase tracking-wider">Screen Type</span><span id="flow-res-disp" class="text-slate-700">14" 3K OLED (120Hz)</span></div>
+                </div>
+
+                <div class="bg-sky-50 border border-sky-100 p-4 rounded-xl space-y-1.5 text-xs">
+                  <span class="font-bold text-sky-700 block"><i class="fa-solid fa-circle-info"></i> Recommendation Analysis</span>
+                  <p id="flow-res-rationale" class="text-slate-600 leading-relaxed text-xs">This matches your requirements for high performance paired with a beautiful display profile.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch gap-3 pt-4 border-t border-slate-200">
+              <button id="flow-action-catalog" class="action-solid flex-1">Show Full Specifications</button>
+              <button id="flow-action-compare" class="action-outline flex-1">Send to Comparison Slot</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-detector" class="scroll-mt-24 bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-rose-100 text-rose-600 rounded-2xl border border-rose-200 shadow-sm">
+            <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="section-title text-slate-900">Diagnostic Shield: Avoid 2026 Buying Traps</h3>
+            <p class="section-subtitle">Common configuration bottlenecks used to push old inventory at the expense of your performance.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+          <button type="button" data-trap-key="ram" class="trap-btn"><i class="fa-solid fa-ban text-rose-500 mr-2"></i>8GB Soldered RAM</button>
+          <button type="button" data-trap-key="screen" class="trap-btn"><i class="fa-solid fa-ban text-rose-500 mr-2"></i>45% NTSC Screens</button>
+          <button type="button" data-trap-key="tgp" class="trap-btn"><i class="fa-solid fa-ban text-rose-500 mr-2"></i>Low-TGP Gaming</button>
+          <button type="button" data-trap-key="npu" class="trap-btn"><i class="fa-solid fa-ban text-rose-500 mr-2"></i>Sub-40 TOPS NPUs</button>
+          <button type="button" data-trap-key="ssd" class="trap-btn"><i class="fa-solid fa-ban text-rose-500 mr-2"></i>Single Slot SSDs</button>
+          <button type="button" data-trap-key="ports" class="trap-btn"><i class="fa-solid fa-ban text-rose-500 mr-2"></i>Data-Only Type-C</button>
+        </div>
+
+        <div class="trap-panel bg-white rounded-2xl p-5 border border-slate-200 text-xs relative overflow-hidden">
+          <div class="absolute right-4 bottom-4 text-rose-100 text-7xl font-black select-none pointer-events-none">TRAP</div>
+          <div id="trap-content-container" class="space-y-4">
+            <span id="trap-title" class="font-bold text-rose-600 block text-sm"><i class="fa-solid fa-ban mr-2"></i><span id="trap-title-text">8GB Soldered RAM Laptops</span></span>
+            <p id="trap-description" class="text-slate-600 leading-relaxed">In 2026, baseline Windows system files paired with background apps use around 6GB. Soldered 8GB RAM forces swap usage and reduces system responsiveness.</p>
+            <div class="bg-rose-50 border border-rose-100 p-3 rounded-xl mt-2 text-[11px] text-slate-600">
+              <span class="font-bold text-slate-700 block mb-0.5">Marketing Pitch Example:</span>
+              <span id="trap-pitch">"Perfect for schoolwork, daily multitasking, and light applications."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="scroll-mt-24 space-y-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h3 class="section-title">2. Complete 2026 Price Segment Catalogs</h3>
+          <p class="section-subtitle">Deep analysis of top-value laptops in India, structured across four price brackets.</p>
+        </div>
+        <div class="info-pill">
+          <span class="font-semibold text-slate-500">Active Database Range:</span>
+          <span class="font-mono text-sky-700">₹28,990 - ₹2,56,030</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-4 overflow-x-auto">
+        <button type="button" data-budget-tab="b1" class="tab-btn active">₹25K - 35K</button>
+        <button type="button" data-budget-tab="b2" class="tab-btn">₹35K - 60K</button>
+        <button type="button" data-budget-tab="b3" class="tab-btn">₹60K - 90K</button>
+        <button type="button" data-budget-tab="b4" class="tab-btn">₹90K - 1.2L+</button>
+      </div>
+
+      <div id="budget-panel" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section id="comparator" class="scroll-mt-24 space-y-6">
+      <div>
+        <h3 class="section-title">3. Side-by-Side Comparison</h3>
+        <p class="section-subtitle">Build a quick comparison of your selected recommendations and track the best fit.</p>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-3">
+        <div class="glass-card rounded-3xl p-6 border border-slate-200 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-sky-50 text-sky-700"><i class="fa-solid fa-check-double"></i></span>
+            <div>
+              <p class="text-xs uppercase tracking-wider text-sky-700 font-bold">Comparison Status</p>
+              <h4 class="text-xl text-slate-900 font-black">Selected Systems</h4>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">Add your current recommendation to the comparison panel and review the purchase match score at a glance.</p>
+          <div class="space-y-3" id="compare-list"></div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 border border-slate-200 space-y-4">
+          <h4 class="text-sm text-sky-700 uppercase tracking-wider font-bold">Rules to compare</h4>
+          <ul class="list-disc list-inside space-y-2 text-xs text-slate-500">
+            <li>Match performance envelope with workload.</li>
+            <li>Prefer expansion-capable RAM and SSD slots.</li>
+            <li>Avoid low color gamut screens if editing or streaming.</li>
+            <li>Choose a laptop with at least one high-power USB-C port.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 border border-slate-200 space-y-4">
+          <h4 class="text-sm text-sky-700 uppercase tracking-wider font-bold">Quick tips</h4>
+          <div class="space-y-3 text-xs text-slate-500">
+            <p><span class="font-semibold text-slate-900">Battery focus:</span> Pick long battery life unless gaming or creator workloads need sustained peak power.</p>
+            <p><span class="font-semibold text-slate-900">Display:</span> OLED adds premium contrast, but matte IPS is better for bright environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning-hub" class="scroll-mt-24 space-y-6">
+      <div>
+        <h3 class="section-title">4. Tech Jargon Explained</h3>
+        <p class="section-subtitle">Short definitions to make sure you understand the marketing terms behind each laptop choice.</p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <article class="info-card">
+          <h4 class="font-semibold text-slate-900">NPU / TOPS</h4>
+          <p class="text-xs text-slate-500">Neural Processing Units are specialized chips used for AI tasks. Higher TOPS means faster on-device model performance.</p>
+        </article>
+        <article class="info-card">
+          <h4 class="font-semibold text-slate-900">TGP</h4>
+          <p class="text-xs text-slate-500">Total Graphics Power describes the GPU power budget. More TGP typically means stronger sustained gaming performance.</p>
+        </article>
+        <article class="info-card">
+          <h4 class="font-semibold text-slate-900">LPDDR5X</h4>
+          <p class="text-xs text-slate-500">Low-power DDR5X memory offers faster bandwidth and better energy efficiency, especially for premium ultrabooks.</p>
+        </article>
+        <article class="info-card">
+          <h4 class="font-semibold text-slate-900">Single Slot SSD</h4>
+          <p class="text-xs text-slate-500">Laptops with only one SSD slot are harder to upgrade later. Prefer dual-slot designs when long-term storage flexibility matters.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
