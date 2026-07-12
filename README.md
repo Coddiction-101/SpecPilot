@@ -1,6 +1,7 @@
 # SpecPilot 
 
 Live - [SpecPilot](https://specpilot.netlify.app/)
+
 ---
 
 I built this because every time someone asks "which laptop should I buy?" the answers online are either sponsored garbage or a Reddit thread from 2019. SpecPilot is my attempt at a clean, honest, hardware-first guide for the Indian laptop market in 2026.
